@@ -8,10 +8,10 @@ The access token can be then be passed as Bearer Token in API requests to the se
 which verifies the access token using a JSON Web Key (JWK) from Kinde.
 
 In total, the authentication/authorization consists of four parts:
-1. The server requests JSON Web Key Set (JWKS) from Kinde in order to verify JWTs.
+1. The server requests a JSON Web Key Set (JWKS) from Kinde in order to verify JWTs.
 2. The client performs authentication with Kinde in order to gain access token (JWT).
 3. The client makes an API request to the server, passing the access token as Bearer Token.
-4. The server uses a JWK from JWKS to verify the JWT passed as Bearer Token.
+4. The server uses a JWK from the JWKS to verify the JWT passed as Bearer Token.
 
 **Auth flow diagram:**
 

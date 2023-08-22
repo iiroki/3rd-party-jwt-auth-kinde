@@ -65,3 +65,39 @@ and add your Kinde URL to it:
     ```
 
 4. Press `To Login` to start authentication with Kinde :)
+
+## JWT Issuer Validation with JWK in .NET
+
+In the end, using a JWK(S) to validate JWT issuer in .NET turned out to be simple and effortless.
+
+The following code snippet demonstrates how to use JWKS from Kinde to validate JWTs in .NET:
+
+```cs
+var kindeUrl = "https://your-business.kinde.com";
+
+// ...
+
+// 1. Request JWKS from Kinde.
+using HttpClient client = new();
+var res = await client.GetAsync($"{kindeUrl}/.well-known/jwks");
+var jsonStr = await res.Content.ReadAsStringAsync();
+var jwks = new JsonWebKeySet(jsonStr);
+
+// ...
+
+// 2. Create JWT validation parameters with the JWKS.
+var jwtValidationParams = new TokenValidationParameters()
+{
+    // Validate both, the issuer and its signing key.
+    ValidateIssuer = true,
+    ValidateIssuerSigningKey = true,
+    ValidIssuer = kindeUrl,
+    IssuerSigningKey = jwks.Keys.First() // <-- The first JWK is used here!
+    // ...
+};
+
+// ...
+
+// 3. Use the JWT validation parameters.
+// (This repo uses ASP.NET Core middleware to validate JWTs.)
+```

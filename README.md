@@ -47,9 +47,14 @@ TODO
     VITE_KINDE_CLIENT_ID=your-kinde-client-id
     ```
 
-2. Start the client:
+2. Install npm dependencies:
+    ```bash
+    npm i
+    ```
+
+3. Start the client:
     ```bash
     npm run dev
     ```
 
-3. Press `To Login` to start authentication with Kinde :)
+4. Press `To Login` to start authentication with Kinde :)

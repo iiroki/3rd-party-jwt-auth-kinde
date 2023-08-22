@@ -1,7 +1,7 @@
 # 3rd Party JWT Auth with Kinde
 
-A simple demonstration about how to user 3rd party user authentication service, Kinde in this case,
-to authorize API requests between a React client and an ASP.NET Core web server with JSON Web Token (JWT).
+A simple demonstration about how a 3rd party user authentication service, Kinde in this case,
+can be used to authorize API requests between a React client and an ASP.NET Core web server with JSON Web Token (JWT).
 
 First, the client must perform authentication with Kinde in order to gain access token (JWT).
 The access token can be then be passed to API requests to the server,

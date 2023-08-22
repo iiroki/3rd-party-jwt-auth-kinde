@@ -28,7 +28,7 @@ public static class Init
             {
                 // Validations:
                 ValidateLifetime = true,
-                ValidateAudience = false,
+                ValidateAudience = false, // Audience could also be validated, but not in this demo.
                 ValidateIssuer = true,
                 ValidateIssuerSigningKey = true, // <-- Important!
                 // Values:

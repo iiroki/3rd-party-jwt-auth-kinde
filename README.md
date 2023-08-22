@@ -13,6 +13,8 @@ In total, the authentication/authorization consists of four parts:
 3. The client makes an API request to the server, passing the access token as Bearer Token.
 4. The server uses the JWK from part 1 to verify the JWT passed as Bearer Token.
 
+TODO: Diagram
+
 ## Quickstart
 
 **Both, the server and the client, must be started separately!**
@@ -24,10 +26,10 @@ TODO
 ### Server
 
 1. Create `appsettings.Development.json` file under `server/Server/`
-(if it doesn't exists) and add `KINDE_URL` to it:
+(if it doesn't exists) and add your Kinde URL to it:
     ```json
     {
-        "KINDE_URL": "https://yourbusiness.kinde.com"
+        "KINDE_URL": "https://your-business.kinde.com"
     }
     ```
 
@@ -38,4 +40,16 @@ TODO
 
 ### Client
 
-TODO
+1. Create `.env` file under `client/` (if it doesn't exists) and the following variables to it:
+    ```
+    VITE_API_URL=http://localhost:8080
+    VITE_KINDE_URL=https://your-business.kinde.com
+    VITE_KINDE_CLIENT_ID=your-kinde-client-id
+    ```
+
+2. Start the client:
+    ```bash
+    npm run dev
+    ```
+
+3. Press `To Login` to start authentication with Kinde :)

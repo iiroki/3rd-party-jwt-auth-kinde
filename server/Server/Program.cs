@@ -1,9 +1,14 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using IiroKi.Server.Config;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 // ===== Configuration: =====
 var builder = WebApplication.CreateBuilder(args);
 var jwtValidationParams = Init.CreateJwtValidationParamsAsync(builder).GetAwaiter().GetResult();
+
+// CORS
+builder.Services.AddCors(
+    opt => opt.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod())
+);
 
 // Setup JWT auth
 builder.Services
@@ -29,6 +34,7 @@ if (app.Environment.IsProduction())
     app.UseHttpsRedirection();
 }
 
+app.UseCors();
 app.UseAuthorization();
 app.MapControllers();
 

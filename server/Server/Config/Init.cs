@@ -1,5 +1,5 @@
-using Microsoft.IdentityModel.Tokens;
 using IiroKi.Server.Services;
+using Microsoft.IdentityModel.Tokens;
 
 namespace IiroKi.Server.Config;
 
@@ -28,13 +28,12 @@ public static class Init
             {
                 // Validations:
                 ValidateLifetime = true,
-                ValidateAudience = false, // TODO: true
+                ValidateAudience = false,
                 ValidateIssuer = true,
                 ValidateIssuerSigningKey = true, // <-- Important!
                 // Values:
                 ValidIssuer = kindeUrl,
                 IssuerSigningKey = jwks.Keys.First()
-                // TODO: More rules?
             };
         }
         catch (Exception ex)

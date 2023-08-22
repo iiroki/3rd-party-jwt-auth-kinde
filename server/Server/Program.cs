@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 var builder = WebApplication.CreateBuilder(args);
 var jwtValidationParams = Init.CreateJwtValidationParamsAsync(builder).GetAwaiter().GetResult();
 
-// CORS
+// CORS (allow everything for demo purposes)
 builder.Services.AddCors(
     opt => opt.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod())
 );
@@ -28,12 +28,6 @@ builder.Services.AddControllers();
 
 // ===== Request pipeline: =====
 var app = builder.Build();
-
-if (app.Environment.IsProduction())
-{
-    app.UseHttpsRedirection();
-}
-
 app.UseCors();
 app.UseAuthorization();
 app.MapControllers();

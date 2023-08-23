@@ -1,7 +1,5 @@
 import axios from 'axios'
-
-const API_URL: string = import.meta.env.VITE_API_URL
-console.log('API_URL:', API_URL)
+import { API_URL } from '../config'
 
 const whoami = async (token: string): Promise<object> => {
   const res = await axios.get(

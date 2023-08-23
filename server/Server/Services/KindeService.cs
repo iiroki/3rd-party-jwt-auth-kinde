@@ -3,10 +3,13 @@ using Microsoft.IdentityModel.Tokens;
 namespace IiroKi.Server.Services;
 
 /// <summary>
-/// Kinde authentication service.
+/// Kinde user service.
 /// </summary>
 public class KindeService
 {
+    /// <summary>
+    /// Fetch JSON Web Key Set (JWKS) from Kinde.
+    /// </summary>
     public static async Task<JsonWebKeySet> FetchJwksAsync(string kindeUrl)
     {
         using HttpClient client = new();

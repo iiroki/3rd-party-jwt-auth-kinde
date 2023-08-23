@@ -3,7 +3,7 @@ import { useKindeAuth } from '@kinde-oss/kinde-auth-react'
 import Authenticated from './components/Authenticated'
 import AuthenticationForm from './components/AuthenticationForm'
 import ReactLogo from './assets/react.svg'
-import ViteLogo from './assets/vite.svg'
+import ViteLogo from '/vite.svg'
 import './App.css'
 
 const App: React.FC = () => {

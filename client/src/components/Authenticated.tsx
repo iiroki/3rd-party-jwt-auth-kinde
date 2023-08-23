@@ -22,10 +22,12 @@ const Authenticated: React.FC = () => {
     }
   }
 
+  const fullName = user.family_name ? `${user.given_name} ${user.family_name}` : user.given_name
+
   return (
     <div className='auth-form'>
       <h2>From Kinde:</h2>
-      <div><b>Name:</b> {user.given_name} {user.family_name}</div>
+      <div><b>Name:</b> {fullName}</div>
       <div><b>Email:</b> {user.email}</div>
       <div><b>ID:</b> {user.id}</div>
       <div>

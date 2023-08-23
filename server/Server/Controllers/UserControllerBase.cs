@@ -7,18 +7,17 @@ namespace IiroKi.Server.Controllers;
 /// </summary>
 public abstract class UserControllerBase : ControllerBase
 {
-    private static readonly string UserIdClaimName = "sub";
     private static readonly string OrganizationIdClaimName = "org_code";
 
     protected string GetUserId()
     {
-        var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == UserIdClaimName);
-        if (userIdClaim != null)
+        var userId = User.Identity?.Name;
+        if (userId != null)
         {
-            return userIdClaim.Value;
+            return userId;
         }
 
-        throw new InvalidOperationException("User ID claim not found");
+        throw new InvalidOperationException("User ID not found");
     }
 
     protected string GetOrganizationId()

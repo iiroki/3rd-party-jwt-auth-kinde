@@ -27,8 +27,10 @@ Instructions on how to setup Kinde can be found from [Kinde Docs](https://kinde.
 
 **Required Kinde resources:**
 - Kinde account and business
-- At least one application ("SPA or Mobile Application")
-- At least one user.
+- An application ("SPA or Mobile Application")
+- An API that's linked to the application
+- At least one user
+- (OPTIONAL: Social logins)
 
 ### Server
 

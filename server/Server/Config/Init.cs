@@ -28,12 +28,16 @@ public static class Init
             {
                 // Validations:
                 ValidateLifetime = true,
-                ValidateAudience = false, // Audience could also be validated, but not in this demo.
+                ValidateAudience = true,
                 ValidateIssuer = true,
                 ValidateIssuerSigningKey = true, // <-- Important!
                 // Values:
+                ValidAudience = "http://localhost:8080", // TODO: Make this configurable.
                 ValidIssuer = kindeUrl,
-                IssuerSigningKey = jwks.Keys.First()
+                IssuerSigningKey = jwks.Keys.First(),
+                // Options:
+                NameClaimType = "sub",
+                RoleClaimType = "not-used"
             };
         }
         catch (Exception ex)

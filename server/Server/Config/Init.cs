@@ -1,3 +1,5 @@
+using System.IdentityModel.Tokens.Jwt;
+using IiroKi.Server.Defaults;
 using IiroKi.Server.Services;
 using Microsoft.IdentityModel.Tokens;
 
@@ -36,14 +38,20 @@ public static class Init
                 ValidIssuer = kindeUrl,
                 IssuerSigningKey = jwks.Keys.First(),
                 // Options:
-                NameClaimType = "sub",
-                RoleClaimType = "not-used"
+                NameClaimType = KindeService.UserIdClaimType,
+                RoleClaimType = ServerDefaults.UserRoleClaimType // Should be extracted from JWT!
             };
         }
         catch (Exception ex)
         {
             throw new InitException("Could not fetch JSON Web Key Set from Kinde", ex);
         }
+    }
+
+    public static void SetupJwtHandler(JwtSecurityTokenHandler jwtHandler)
+    {
+        jwtHandler.InboundClaimTypeMap.Clear();
+        jwtHandler.InboundClaimFilter.Add(ServerDefaults.UserRoleClaimType); // <-- Remove user roles from JWT
     }
 
     /// <summary>

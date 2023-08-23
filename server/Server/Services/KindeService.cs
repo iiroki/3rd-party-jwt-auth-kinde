@@ -5,8 +5,10 @@ namespace IiroKi.Server.Services;
 /// <summary>
 /// Kinde user service.
 /// </summary>
-public class KindeService
+public static class KindeService
 {
+    public const string UserIdClaimType = "sub";
+
     /// <summary>
     /// Fetch JSON Web Key Set (JWKS) from Kinde.
     /// </summary>
